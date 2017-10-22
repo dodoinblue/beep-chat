@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the LoginPage page.
+ * Generated class for the InboxPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: 'page-inbox',
+  templateUrl: 'inbox.html',
 })
-export class LoginPage {
+export class InboxPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  navigateToPage(pageName: string) {
-    pageName === 'TabsPage' ? this.navCtrl.setRoot(pageName) : this.navCtrl.push(pageName);
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad InboxPage');
   }
 
 }
