@@ -1,4 +1,4 @@
-import { User } from '../users/user';
+import { User } from '../users/user.interface';
 
 export interface Message {
   user: User;
