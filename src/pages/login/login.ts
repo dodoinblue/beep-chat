@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,6 +8,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController) {
+  }
+
+  login(event) {
+    console.log(event);
+    if(!event.error) {
+      this.navCtrl.setRoot('ProfilePage');
+    } else {
+      this.toast.create({
+        message: 'Login failed: ' + event.error.message,
+        duration: 3000
+      }).present();
+    }
   }
 }
