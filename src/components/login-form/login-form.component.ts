@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Account } from '../../models/account/account.interface';
 import { LoginResponse } from '../../models/login/login-response.interface';
+
+import { AuthService } from '../../providers/auth/auth.service'
 
 @Component({
   selector: 'app-login-form',
@@ -13,22 +14,14 @@ export class LoginFormComponent {
   account = {} as Account;
   @Output() loginStatus: EventEmitter<LoginResponse>;
 
-  constructor(private afAuth: AngularFireAuth, private navCtrl: NavController) {
+  constructor(private auth: AuthService, private navCtrl: NavController) {
     this.loginStatus = new EventEmitter<any>();
   }
 
   async login() {
-    try {
-      const result: LoginResponse = { 
-        result: await this.afAuth.auth.signInWithEmailAndPassword(this.account.email, this.account.password)
-      }
-      this.loginStatus.emit(result);
-    } catch(e) {
-      const error: LoginResponse = {
-        error: e
-      }
-      this.loginStatus.emit(error);
-    }
+
+    const result = await this.auth.signInWithEmailAndPassword(this.account)
+    this.loginStatus.emit(result);
   }
 
 

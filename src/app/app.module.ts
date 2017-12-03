@@ -7,6 +7,8 @@ import { AngularFireModule } from 'angularfire2'
 import { FIREBASE_CONFIG } from './app.firebase.config'
 
 import { MyApp } from './app.component';
+import { AuthService } from '../providers/auth/auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MyApp } from './app.component';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthService,
+    AngularFireAuth
   ]
 })
 export class AppModule {}
