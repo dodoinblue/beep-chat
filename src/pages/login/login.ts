@@ -14,7 +14,7 @@ export class LoginPage {
   login(event) {
     console.log(event);
     if(!event.error) {
-      this.navCtrl.setRoot('ProfilePage');
+      this.navCtrl.setRoot('EditProfilePage');
     } else {
       this.toast.create({
         message: 'Login failed: ' + event.error.message,

@@ -1,5 +1,5 @@
 import { Message } from '../../models/messages/message.interface';
-import { USER_LIST } from '../users/user'
+import { USER_LIST } from '../profile/profile'
 
 const userList = USER_LIST;
 
