@@ -11,6 +11,10 @@ export class AuthService {
     console.log('Hello AuthProvider Provider');
   }
 
+  getAuthenticatedUser() {
+    return this.auth.authState;
+  }
+
   async signInWithEmailAndPassword(account: Account) {
     try {
       return <LoginResponse> {
