@@ -8,7 +8,6 @@ import { LoginResponse } from '../../models/login/login-response.interface';
 export class AuthService {
 
   constructor(private auth: AngularFireAuth) {
-    console.log('Hello AuthProvider Provider');
   }
 
   getAuthenticatedUser() {
