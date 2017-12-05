@@ -17,7 +17,11 @@ export class InboxPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad InboxPage');
+    console.log(this.messageList);
+  }
+
+  navigateToSearchUserPage() {
+    this.navCtrl.push('SearchUserPage');
   }
 
 }
