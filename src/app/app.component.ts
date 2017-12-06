@@ -17,7 +17,7 @@ export class MyApp {
     platform.ready().then(() => {
 
       this.auth.getAuthenticatedUser().subscribe(auth => {
-        this.rootPage = auth ? 'TabsPage' : 'LoginPage'
+        this.rootPage = auth ? 'MessagePage' : 'LoginPage'
       });
 
       // Okay, so the platform is ready and our plugins are available.
