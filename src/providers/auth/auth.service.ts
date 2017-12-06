@@ -38,4 +38,8 @@ export class AuthService {
     }
   }
 
+  signOut() {
+    this.auth.auth.signOut();
+  }
+
 }

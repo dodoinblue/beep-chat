@@ -26,7 +26,6 @@ export class DataService {
 
   getProfile(user: User) {
     this.profileObject = this.database.object(`/profiles/${user.uid}`, {preserveSnapshot: true});
-
     return this.profileObject.take(1);
   }
 

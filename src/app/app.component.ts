@@ -8,7 +8,7 @@ import { AuthService } from '../providers/auth/auth.service';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: string;
+  rootPage: string = 'LoginPage';
 
   constructor(platform: Platform,
     statusBar: StatusBar,
@@ -16,9 +16,9 @@ export class MyApp {
     private auth: AuthService) {
     platform.ready().then(() => {
 
-      this.auth.getAuthenticatedUser().subscribe(auth => {
-        this.rootPage = auth ? 'MessagePage' : 'LoginPage'
-      });
+      // this.auth.getAuthenticatedUser().subscribe(auth => {
+      //   this.rootPage = auth ? 'MessagePage' : 'LoginPage'
+      // });
 
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
