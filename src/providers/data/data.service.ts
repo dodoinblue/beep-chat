@@ -3,6 +3,9 @@ import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable }
 import { User } from 'firebase/app';
 import { Profile } from '../../models/profile/profile.interface';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class DataService {
@@ -10,7 +13,7 @@ export class DataService {
   profileObject: FirebaseObjectObservable<Profile>
   profileList: FirebaseListObservable<Profile>
 
-  constructor(private database: AngularFireDatabase) {
+  constructor(private auth: AuthService, private database: AngularFireDatabase) {
   }
 
   searchUser(firstName: string) {
@@ -27,6 +30,13 @@ export class DataService {
   getProfile(user: User) {
     this.profileObject = this.database.object(`/profiles/${user.uid}`, {preserveSnapshot: true});
     return this.profileObject.take(1);
+  }
+
+  getAuthenticatedUserProfile() {
+    return this.auth.getAuthenticatedUser()
+    .map(user => user.uid)
+    .mergeMap(authId => this.database.object(`/profiles/${authId}`))
+    .take(1);
   }
 
   async saveProfile(user: User, profile: Profile) {
